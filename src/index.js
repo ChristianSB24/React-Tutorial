@@ -16,13 +16,22 @@ class Square extends React.Component {
   }
   
   class Board extends React.Component {
+    // We assign the state variable and its initial state
     constructor(props) {
       super(props);
       this.state = {
         squares: Array(9).fill(null),
       };
     }
+
+    handleClick(i) {
+      // These are the instructions for onClick
+      const squares = this.state.squares.slice()
+      squares[i] = 'X';
+      this.setState({squares: squares});
+    }
     renderSquare(i) {
+      // This renders each individual square. It passes the state of the square as well as the state of the onClick.
       return (
         <Square 
           value={this.state.squares[i]}
